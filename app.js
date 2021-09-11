@@ -3,14 +3,19 @@ const express = require('express')
 const auth = require('./middleware/auth')
 const loginRoute = require('./routes/login')
 const blogRoute = require('./routes/blog')
-
+const fileUpload = require('express-fileupload')
 const app = express()
 
 
 //settings
+
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({extended:false}))
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}));
 app.set('view engine','ejs')
 
 //path
