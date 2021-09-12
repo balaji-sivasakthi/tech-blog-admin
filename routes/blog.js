@@ -15,12 +15,12 @@ blog.get('/',(req,res)=>{
  res.render('page/blog',{data:""})
 })
 
-const cpUpload = upload.fields([{ name: 'banner', maxCount: 1 }, { name: 'banner2', maxCount: 8 }])
+const cpUpload = upload.fields([{ name: 'banner', maxCount: 1 }, { name: 'banner2', maxCount: 1 }])
 blog.post('/',cpUpload,async (req,res,next)=>{
     console.log(req.files)
     console.log(req.body);
-    const banner = req.files.banner[0]                                          
-    const banner2 = req.files.banner[1]                                          
+    const banner = req.files.banner                                          
+    const banner2 = req.files.banner2                                          
     //console.log(banner_blob)
 
 
@@ -34,25 +34,17 @@ blog.post('/',cpUpload,async (req,res,next)=>{
     console.log(req.body);
     if(files){
     
-    const banner = files.banner
-    const banner2 = files.banner2
-    
-   
-
-
-
-
 
     try {
-        const b1 = banner
-        const b2 = banner
+        const b1 = banner[0]
+        const b2 = banner2[0]
 
       
 
-        const b1Url = await uploadImage(b1,'techblog/'+dateTime+'-b1')
-        const b2url = await uploadImage(b1,'techblog/'+dateTime+'-b2')
         
-      
+        
+        const b1Url = await uploadImage(b1,'techblog/'+dateTime+'b1')
+        const b2url = await uploadImage(b2,'techblog/'+dateTime+'b2')
         data['title']=req.body.title
         data['short']=req.body.short
         data['tag']=req.body.tag
