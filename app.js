@@ -33,4 +33,4 @@ app.get('/',auth,(req,res)=>{
 
 
 
-app.listen(process.env.PORT||5000,()=>{console.log("Running....")})
+app.listen(process.env.PORT,()=>{console.log("Running....")})
