@@ -47,7 +47,7 @@ blog.post('/',cpUpload,async (req,res,next)=>{
         const b1 = banner
         const b2 = banner
 
-        //db.collection('blog').doc().set(data)
+      
 
         const b1Url = await uploadImage(b1,'techblog/'+dateTime+'-b1')
         const b2url = await uploadImage(b1,'techblog/'+dateTime+'-b2')
