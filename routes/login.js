@@ -8,7 +8,6 @@ const db = require('../config').firestore();
 login.get('/',(req,res)=>{
     res.render('login')
 })
-
 login.post('/',(req,res)=>{
     
     const email = req.body.email;
