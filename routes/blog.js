@@ -12,18 +12,46 @@ const upload = multer({
 const db = firebase.firestore();
 
 blog.get('/',(req,res)=>{
- res.render('page/blog',{data:""})
+        const loginName=req.cookies['admin_name']
+        db.collection('blog').where('author','==',req.cookies['latrosoft_author']).get()
+        .then(r=>{
+            var doc=[]
+            r.forEach(e=>{
+                var data = e.data();
+                data.id = e.id
+                doc.push(data)
+            })
+            res.render('page/blog',{data:doc,login:loginName})
+        })
+
 })
 
+
+blog.get('/edit',(req,res)=>{
+  const loginName=req.cookies['admin_name']
+    var docId=req.query.id;
+    
+    db.collection('blog').doc().get()
+    .then(r=>{
+        const doc = r.data()
+        res.render('page/editblog',{data:doc,login:loginName})
+    })
+
+})
+
+
+
+
+
+
+
 const cpUpload = upload.fields([{ name: 'banner', maxCount: 1 }, { name: 'banner2', maxCount: 1 }])
-blog.post('/',cpUpload,async (req,res,next)=>{
+blog.post('/',cpUpload,async (req,res)=>{
     console.log(req.files)
     console.log(req.body);
     const banner = req.files.banner                                          
     const banner2 = req.files.banner2                                          
     //console.log(banner_blob)
-
-
     var data ={}
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -38,13 +66,8 @@ blog.post('/',cpUpload,async (req,res,next)=>{
     try {
         const b1 = banner[0]
         const b2 = banner2[0]
-
-      
-
-        
-        
-        const b1Url = await uploadImage(b1,'techblog/'+dateTime+'b1')
-        const b2url = await uploadImage(b2,'techblog/'+dateTime+'b2')
+        const b1Url = await uploadImage(b1,'techblog/'+dateTime+'-b1')
+        const b2url = await uploadImage(b2,'techblog/'+dateTime+'-b2')
         data['title']=req.body.title
         data['short']=req.body.short
         data['tag']=req.body.tag
@@ -58,14 +81,9 @@ blog.post('/',cpUpload,async (req,res,next)=>{
         data['banner-2']= b2url
         console.log(data);
         db.collection('blog').doc().set(data)
-        
-        
-        
-
-
-
+    
       } catch (error) {
-        next(error)
+            res.send(error)
       }
     
     // console.log("------Files-------");

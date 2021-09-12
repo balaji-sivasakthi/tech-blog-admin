@@ -15,21 +15,22 @@ app.set('view engine','ejs')
 
 //path
 app.use('/',express.static(__dirname+'/Public'))
+app.use('/blog',express.static(__dirname+'/Public'))
 
 //route
 app.use('/login',loginRoute)
 app.use('/blog',blogRoute)
 
-
 app.get('/',auth,(req,res)=>{
     
-    const adminName=req.cookies['admin_name']
+    const loginName=req.cookies['admin_name']
 
-    const data={
-        logInAs:adminName
-    }
+ 
 
-    res.render('index',{data:data})
+    res.render('index',{login:loginName})
 })
+
+
+
 
 app.listen(3000,()=>{console.log("Running....")})
