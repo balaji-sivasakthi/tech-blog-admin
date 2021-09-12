@@ -18,7 +18,7 @@ app.use('/',express.static(__dirname+'/Public'))
 app.use('/blog',express.static(__dirname+'/Public'))
 
 //route
-app.use('/login',auth,loginRoute)
+app.use('/login',loginRoute)
 app.use('/blog',auth,blogRoute)
 
 app.get('/',auth,(req,res)=>{
