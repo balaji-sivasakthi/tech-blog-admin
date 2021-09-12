@@ -77,15 +77,15 @@ blog.post('/edit',async (req,res)=>{
         db.collection('blog').doc(id).set(data)
     
       } catch (error) {
-            res.send(error)
+        res.redirect('/blog#error')
       }
     
     // console.log("------Files-------");
     
    
    
-    res.redirect('/blog')
-
+    res.redirect('/blog#success')
+    
     
 
     // }else{
@@ -97,7 +97,17 @@ blog.post('/edit',async (req,res)=>{
 
 
 
-
+blog.delete('/delete',(req,res)=>{
+  var docId = req.query.id
+  try {
+    db.collection('blog').doc(docId).delete()
+    res.redirect('/blog#success')
+  } catch (error) {
+    res.redirect('/blog#error')
+  }
+  
+ 
+})
 
 
 blog.post('/',cpUpload,async (req,res)=>{

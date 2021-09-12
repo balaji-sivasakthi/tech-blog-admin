@@ -18,8 +18,8 @@ app.use('/',express.static(__dirname+'/Public'))
 app.use('/blog',express.static(__dirname+'/Public'))
 
 //route
-app.use('/login',loginRoute)
-app.use('/blog',blogRoute)
+app.use('/login',auth,loginRoute)
+app.use('/blog',auth,blogRoute)
 
 app.get('/',auth,(req,res)=>{
     
@@ -33,4 +33,4 @@ app.get('/',auth,(req,res)=>{
 
 
 
-app.listen(3000,()=>{console.log("Running....")})
+app.listen(3000||process.env.PORT,()=>{console.log("Running....")})
