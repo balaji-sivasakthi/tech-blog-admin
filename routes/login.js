@@ -27,6 +27,7 @@ login.post('/',(req,res)=>{
                 {expiresIn:'2h'}
             )
                 res.cookie('access_token',token,{expires:new Date(Date.now()+2*3600000)})
+                res.cookie('latrosoft_author',user.email,{expires:new Date(Date.now()+2*3600000)})
                 res.redirect('/')
 
         }else{
