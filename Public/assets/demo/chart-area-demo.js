@@ -9,7 +9,7 @@ var myLineChart = new Chart(ctx, {
   data: {
     labels: tagData,
     datasets: [{
-      label: "Sessions",
+      label: "Views",
       lineTension: 0.3,
       backgroundColor: "rgba(2,117,216,0.2)",
       borderColor: "rgba(2,117,216,1)",
@@ -39,8 +39,8 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 40000,
-          maxTicksLimit: 5
+          max: 10000,
+          
         },
         gridLines: {
           color: "rgba(0, 0, 0, .125)",

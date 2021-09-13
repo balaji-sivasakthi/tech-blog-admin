@@ -11,8 +11,8 @@ const bucket = gc.bucket('latroosfttechblog') // should be your bucket name
  *   "originalname" and "buffer" as keys
  */
 
-const uploadImage = (file,name) => new Promise((resolve, reject) => {
-  const { originalname, buffer } = file
+exports.uploadImage = (file,name) => new Promise((resolve, reject) => {
+  const { buffer } = file
 
   const blob = bucket.file(name+'.png')
   
@@ -31,4 +31,17 @@ const uploadImage = (file,name) => new Promise((resolve, reject) => {
   .end(buffer)
 })
 
-module.exports =uploadImage
+
+exports.deleteImage=(folder)=> new Promise(async(resolve,reject)=>{
+  try {
+  
+    bucket.getFiles({ prefix: folder }, function(err, files) {})
+    bucket.deleteFiles({ prefix: folder }, function(err) {})
+    resolve("Success")
+  } catch (error) {
+    reject(error)
+  }
+   
+    
+
+})

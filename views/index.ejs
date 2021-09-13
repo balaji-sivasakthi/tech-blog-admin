@@ -116,13 +116,27 @@
                 <%-include('./partials/_footer')%>
             </div>
         </div>
-        <div id="tag-data" data-test="<%= tag.join(',') %>"></div>
-       
+        <div id="tag-name" data-test="<%= tag.join(',') %>"></div>
+        <div id="tag-data" data-test="<%= tagValue.join(',') %>"></div>
+        <div id="blog-name" data-test="<%= blogLabel.join(',') %>"></div>
+        <div id="blog-data" data-test="<%= blogValue.join(',') %>"></div>
         <script>
-            var test = document.getElementById('tag-data').dataset.test;
-            console.log(test);
-            var d = test.split(',')
+            var tn = document.getElementById('tag-name').dataset.test;
+            var tv = document.getElementById('tag-data').dataset.test;
+            var bn = document.getElementById('blog-name').dataset.test;
+            var bv = document.getElementById('blog-data').dataset.test;
+            
+            var d = tn.split(',')
+            var d1=tv.split(',')
+            
+            var b = bn.split(',')
+            var b1=bv.split(',')
+            
             var tagData =d;
+            var tagValue=d1;
+            var blogName =b;
+            var blogValue=b1
+           // console.log(tagValue)
          </script>
        
     

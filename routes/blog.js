@@ -39,7 +39,7 @@ blog.get('/delete',async(req,res)=>{
   const docId = req.query.id
   try {
     await db.collection('blog').doc(docId).delete()
-    deleteImage(docId)
+    await deleteImage('techblog/'+docId+'/')
     res.redirect("/blog")
   } catch (error) {
    res.send(error)
