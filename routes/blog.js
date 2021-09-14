@@ -53,20 +53,11 @@ blog.get('/delete',async(req,res)=>{
 blog.get('/edit',async (req,res)=>{
   const loginName=req.cookies['admin_name']
     var docId=req.query.id;
-    
-    db.collection('blog').doc(docId).get()
-    .then(async r=>{
-        const doc = r.data()
-        var tag = await db.collection('tag').doc('tag').get()
+    var tag = await db.collection('tag').doc('tag').get()
         tag = tag.data()
-        db.collection('blog').where('author','==',req.cookies['latrosoft_author']).get()
-        .then(r=>{
-            var doc=[]
-            r.forEach(e=>{
-                var data = e.data();
-                data.id = e.id
-                doc.push(data)
-            })
+    db.collection('blog').doc(docId).get()
+    .then(r=>{
+        const doc = r.data()
         res.render('page/editblog',{data:doc,login:loginName,tag:tag.tag})
     })
 
