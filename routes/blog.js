@@ -55,7 +55,7 @@ blog.get('/edit',async (req,res)=>{
     var docId=req.query.id;
     
     db.collection('blog').doc(docId).get()
-    .then(r=>{
+    .then(async r=>{
         const doc = r.data()
         var tag = await db.collection('tag').doc('tag').get()
         tag = tag.data()
