@@ -37,7 +37,10 @@
                                       <div class="form-group my-3">
                                         <label for="title">Tag</label>
                                         <select name="tag" value="<%=data.tag%>" id="tag" class="form-control" placeholder="">
-                                            <option value="gadjet">Gadget</option>
+                                          <%tag.forEach(e=>{%>
+                                            <option value="<%=e%>"><%=e%></option>
+
+                                        <%})%>
                                         </select>
                                       </div>
                                      
