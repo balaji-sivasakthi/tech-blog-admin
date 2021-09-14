@@ -104,7 +104,7 @@ blog.post('/edit',cpUpload,async (req,res)=>{
         data['short']=req.body.short
         data['tag']=req.body.tag
         data['para'] =req.body.para
-        data['para2'] = req.body.para2
+       
         data['author'] = req.cookies['latrosoft_author']
         data['by'] =req.cookies['admin_name']
         data['date']= dateTime
@@ -163,7 +163,7 @@ blog.post('/',cpUpload,async (req,res)=>{
         data['short']=req.body.short
         data['tag']=req.body.tag
         data['para'] =req.body.para
-        data['para2'] = req.body.para2
+       
         data['author'] = req.cookies['latrosoft_author']
         data['by'] =req.cookies['admin_name']
         data['views']=0
