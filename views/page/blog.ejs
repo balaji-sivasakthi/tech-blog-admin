@@ -79,7 +79,7 @@
                                     <thead>
                                         <tr>
                                             <th>Title</th>
-                                            <th>Author</th>
+                                            <th>Short</th>
                                             <th>Tag</th>
                                             <th>Views</th>
                                             <th>Edit</th>
@@ -89,7 +89,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Title</th>
-                                            <th>Author</th>
+                                            <th>Short</th>
                                             <th>Tag</th>
                                             <th>Views</th>
                                             <th>Edit</th>
@@ -101,7 +101,7 @@
                                         <%data.forEach(e=>{%>
                                             <tr>
                                                 <td><%=e.title%></td>
-                                                <td><%=e.author%></td>
+                                                <td><%=e.short%></td>
                                                 <td><%=e.tag%></td>
                                                 <td><%=e.views%></td>
                                                 <td> <a href="/blog/edit?id=<%=e.id%>"  class="btn btn-primary">Edit</a> </td>

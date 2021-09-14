@@ -14,7 +14,7 @@ login.post('/',(req,res)=>{
     const pass = req.body.password;
     console.log(req.body);
     
-    db.collection('admin').doc(email).get()
+    db.collection('author').doc(email).get()
     .then(async e=>{
         const user = e.data()
         console.log(user);

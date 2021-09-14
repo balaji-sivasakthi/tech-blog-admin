@@ -17,6 +17,7 @@ app.set('view engine','ejs')
 //path
 app.use('/',express.static(__dirname+'/Public'))
 app.use('/blog',express.static(__dirname+'/Public'))
+app.use('/author',express.static(__dirname+'/Public'))
 
 //route
 app.use('/login',loginRoute)
