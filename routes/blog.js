@@ -54,10 +54,12 @@ blog.get('/edit',async (req,res)=>{
   const loginName=req.cookies['admin_name']
     var docId=req.query.id;
     var tag = await db.collection('tag').doc('tag').get()
-        tag = tag.data()
+    tag = tag.data()
+    console.log(tag)
     db.collection('blog').doc(docId).get()
     .then(r=>{
         const doc = r.data()
+        
         res.render('page/editblog',{data:doc,login:loginName,tag:tag.tag})
     })
 
