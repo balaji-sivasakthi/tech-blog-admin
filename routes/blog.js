@@ -93,7 +93,7 @@ blog.post('/edit',cpUpload,async (req,res)=>{
     
     try {
         const b1 = banner[0]
-        const b2 = banner2[0]
+    
         const b1Url = await uploadImage(b1,'techblog/'+docId+'/b1')
         const b2url = await uploadImage(b2,'techblog/'+docId+'/b2')
         data['title']=req.body.title
@@ -151,7 +151,7 @@ blog.post('/',cpUpload,async (req,res)=>{
     
     try {
         const b1 = banner[0]
-        const b2 = banner2[0]
+     
         const b1Url =""
         
         const b2url = ""
@@ -171,7 +171,7 @@ blog.post('/',cpUpload,async (req,res)=>{
         await db.collection('blog').doc(slugify(req.body.title)).set(data)
         
        
-      await db.collection('blog').doc(slugify(req.body.title)).update({banner: await uploadImage(b1,'techblog/'+slugify(req.body.title)+'/b1'),banner2: await uploadImage(b2,'techblog/'+slugify(req.body.title)+'/b2')})
+      await db.collection('blog').doc(slugify(req.body.title)).update({banner: await uploadImage(b1,'techblog/'+slugify(req.body.title)+'/b1')})
        res.redirect('/blog')
       } catch (error) {
             res.send("Error"+error)
