@@ -74,16 +74,12 @@ blog.get('/edit',async (req,res)=>{
 blog.post('/edit',cpUpload,async (req,res)=>{
 
 
-  
-
-
-
   var docId=req.query.id;
   
   console.log(req.files)
     console.log(req.body);
     const banner = req.files.banner                                          
-    const banner2 = req.files.banner2                                          
+                                           
     //console.log(banner_blob)
     var data ={}
     var today = new Date();
@@ -109,7 +105,7 @@ blog.post('/edit',cpUpload,async (req,res)=>{
         data['by'] =req.cookies['admin_name']
         data['date']= dateTime
         data['banner']= b1Url
-        data['banner-2']= b2url
+     
         console.log(data);
         db.collection('blog').doc(docId).update(data)
 
@@ -141,7 +137,7 @@ blog.post('/',cpUpload,async (req,res)=>{
     console.log(req.files)
     console.log(req.body);
     const banner = req.files.banner                                          
-    const banner2 = req.files.banner2                                          
+                                            
     //console.log(banner_blob)
     var data ={}
     var today = new Date();
@@ -169,7 +165,7 @@ blog.post('/',cpUpload,async (req,res)=>{
         data['views']=0
         data['date']= dateTime
         data['banner']= b1Url
-        data['banner2']= b2url
+     
         console.log(data);
 
         await db.collection('blog').doc(slugify(req.body.title)).set(data)
