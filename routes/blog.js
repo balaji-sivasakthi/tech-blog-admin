@@ -95,7 +95,6 @@ blog.post('/edit',cpUpload,async (req,res)=>{
         const b1 = banner[0]
     
         const b1Url = await uploadImage(b1,'techblog/'+docId+'/b1')
-        const b2url = await uploadImage(b2,'techblog/'+docId+'/b2')
         data['title']=req.body.title
         data['short']=req.body.short
         data['tag']=req.body.tag
@@ -154,7 +153,7 @@ blog.post('/',cpUpload,async (req,res)=>{
      
         const b1Url =""
         
-        const b2url = ""
+  
         data['title']=req.body.title
         data['short']=req.body.short
         data['tag']=req.body.tag
