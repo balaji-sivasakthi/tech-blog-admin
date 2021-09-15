@@ -13,7 +13,7 @@ const upload = multer({
   })
 const db = firebase.firestore();
 
-const cpUpload = upload.fields([{ name: 'banner', maxCount: 1 }, { name: 'banner2', maxCount: 1 }])
+const cpUpload = upload.fields([{ name: 'banner', maxCount: 1 }])
 blog.get('/',async(req,res)=>{
         const loginName=req.cookies['admin_name']
         var tag = await db.collection('tag').doc('tag').get()
