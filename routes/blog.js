@@ -82,10 +82,8 @@ blog.post('/edit',cpUpload,async (req,res)=>{
                                            
     //console.log(banner_blob)
     var data ={}
-    var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date+' '+time;
+   
+    var dateTime =firebase.firestore.Timestamp.now()
 
     const files = req.files;
     console.log(req.body);
@@ -139,10 +137,7 @@ blog.post('/',cpUpload,async (req,res)=>{
                                             
     //console.log(banner_blob)
     var data ={}
-    var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date+' '+time;
+    var dateTime =firebase.firestore.Timestamp.now()
 
     const files = req.files;
     console.log(req.body);
