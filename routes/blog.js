@@ -109,7 +109,7 @@ blog.post('/edit',cpUpload,async (req,res)=>{
         res.redirect('/blog#success')
     
       } catch (error) {
-            res.send(error)
+            res.send("Error:"+error)
       }
  
     }
