@@ -1,7 +1,10 @@
 const cookieParser = require('cookie-parser')
 const express = require('express')
 const auth = require('./middleware/auth')
+const aauth = require('./middleware/adminauth')
 const loginRoute = require('./routes/login')
+const loginAdminRoute = require('./routes/adminlogin')
+
 const blogRoute = require('./routes/blog')
 const authorRoute = require('./routes/author')
 const app = express()
@@ -21,8 +24,9 @@ app.use('/author',express.static(__dirname+'/Public'))
 
 //route
 app.use('/login',loginRoute)
+app.use('/loginAdmin',loginAdminRoute)
 app.use('/blog',auth,blogRoute)
-app.use('/author',auth,authorRoute)
+app.use('/author',aauth,authorRoute)
 
 app.get('/',auth,async(req,res)=>{
     let count={}
