@@ -27,7 +27,7 @@ login.post('/',(req,res)=>{
             )
                 res.cookie('access_token_admin',token,{expires:new Date(Date.now()+2*3600000)})
                 res.cookie('latrosoft_author',user.email,{expires:new Date(Date.now()+2*3600000)})
-                res.redirect('/loginAdmin')
+                res.redirect('/author')
 
         }else{
             console.log("I'm False..");
